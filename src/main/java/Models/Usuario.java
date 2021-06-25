@@ -1,38 +1,27 @@
 package Models;
-import java.nio.charset.Charset;
 import java.util.Random;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Past;
 
 @Entity
 public class Usuario {
-	@NotBlank
-	@Email
-	public String email;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String matricula;
+	private int matricula;
+	public String email;
 	public String senha;
-	@NotBlank
 	public String cpf;
-	@NotBlank
 	public String nome;
-	@NotBlank
-	@Past
 	public String datanasc;
+	public String usertype;
 	
-	
-	public Usuario(@NotBlank @Email String email, @NotBlank String cpf, @NotBlank String nome,
-			@NotBlank @Past String datanasc) {
-		super();
+	public Usuario() {};
+	public Usuario(String email, String cpf, String nome, String datanasc, String usertype) {
 		this.email = email;
+		this.usertype = usertype;
 		PasswordGen();
 		this.cpf = cpf;
 		this.nome = nome;
@@ -70,9 +59,28 @@ public class Usuario {
 		this.datanasc = datanasc;
 	}
 	private void PasswordGen() {
-		byte[] array = new byte[7];
-		new Random().nextBytes(array);
-		this.senha =  new String(array,Charset.forName("UTF-8"));
+		int leftLimit = 97; // letter 'a'
+	    int rightLimit = 122; // letter 'z'
+	    int targetStringLength = 10;
+	    Random random = new Random();
+
+	    this.senha = random.ints(leftLimit, rightLimit + 1)
+	      .limit(targetStringLength)
+	      .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+	      .toString();
+	}
+	
+	public String toString() {
+		return "\n email:"+email+
+				"\n senha:"+senha+
+				"\n nome:"+nome+
+				"\n cpf:"+cpf+
+				"\n datanasc:"+datanasc+
+				"\n matricula:"+ matricula+
+				"\n tipo:"+usertype;
+	}
+	public boolean isValid() {
+		return !cpf.isBlank() && !nome.isBlank() && !email.isBlank();
 	}
 	
 	
