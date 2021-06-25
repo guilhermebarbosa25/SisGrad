@@ -1,5 +1,11 @@
 package Models;
+import java.nio.charset.Charset;
+import java.util.Random;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Past;
@@ -9,7 +15,10 @@ public class Usuario {
 	@NotBlank
 	@Email
 	public String email;
-	@NotBlank
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private String matricula;
 	public String senha;
 	@NotBlank
 	public String cpf;
@@ -20,11 +29,11 @@ public class Usuario {
 	public String datanasc;
 	
 	
-	public Usuario(@NotBlank @Email String email, @NotBlank String senha, @NotBlank String cpf, @NotBlank String nome,
+	public Usuario(@NotBlank @Email String email, @NotBlank String cpf, @NotBlank String nome,
 			@NotBlank @Past String datanasc) {
 		super();
 		this.email = email;
-		this.senha = senha;
+		PasswordGen();
 		this.cpf = cpf;
 		this.nome = nome;
 		this.datanasc = datanasc;
@@ -60,8 +69,11 @@ public class Usuario {
 	public void setDatanasc(String datanasc) {
 		this.datanasc = datanasc;
 	}
-	
-	
+	private void PasswordGen() {
+		byte[] array = new byte[7];
+		new Random().nextBytes(array);
+		this.senha =  new String(array,Charset.forName("UTF-8"));
+	}
 	
 	
 	

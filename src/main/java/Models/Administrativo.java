@@ -13,14 +13,13 @@ public class Administrativo extends Usuario{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String matricula;
-	private String curso;
+	private String departamento;
 
-	public Administrativo(@NotBlank @Email String email, @NotBlank String senha, @NotBlank String cpf, @NotBlank String nome,
-			@NotBlank @Past String datanasc, String curso) {
-		super(email,  senha,  cpf,  nome, datanasc);
-		this.curso = curso;
+	public Administrativo(@NotBlank @Email String email, @NotBlank String cpf, @NotBlank String nome,
+			@NotBlank @Past String datanasc, String departamento) {
+		super(email,  cpf,  nome, datanasc);
+		this.departamento = departamento;
 	}
-	
 	
  
 }
