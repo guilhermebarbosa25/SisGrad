@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SisGrad</title>
+<style>
+div.mytable {
+  margin: auto;
+  width: 1020px;
+  padding: 10px; 
+}
+</style>
+</head>
+<body>
+
+	<h3>
+		Dados do usuário
+		</h3>
+		<div class="mytable" align="center">
+			<table  border="1" style="width:500px">
+				<thead class="table-info">
+					<tr style="text-align: center; vertical-align: middle">
+						<th scope="col" style="width:100px">Matricula</th>
+						<th scope="col" style="width:300px">Nome</th>
+						<th scope="col" style="width:200px">CPF</th>
+						<th scope="col" style="width:300px">E-Mail</th>
+						<th scope="col" style="width:200px">Tipo</th>
+					</tr>
+					
+				</thead>
+				<tbody>
+					<tr th:each="Usuario : ${usuario}" style="text-align: center; vertical-align: middle">
+						<td><span th:text="${usuario.matricula}"> Matrícula </span></td>
+						<td><span th:text="${usuario.nome}"> Nome </span></td>
+						<td><span th:text="${usuario.cpf}"> CPF </span></td>
+						<td><span th:text="${usuario.email}"> E-Mail </span></td>
+						<td><span th:text="${usuario.usertype}"> Tipo </span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<form method="get" action="/menuAdm/mngUsuarios/viewUser/Lista/voltar"><button>Voltar</button></form>
+</body>
+</html>
