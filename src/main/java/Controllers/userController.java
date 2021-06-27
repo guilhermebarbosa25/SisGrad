@@ -1,5 +1,7 @@
 package Controllers;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,8 @@ public class userController {
 	
 	@Autowired
 	private UserRepository repositorio;
-		
+			
+	
 	@Transactional
 	@PostMapping(path="/menuAdm/mngUsuarios/newUser/post")
 	public  String PostUser(Usuario usr, final RedirectAttributes redirectattributes){
@@ -42,10 +45,10 @@ public class userController {
 		return "redirect:/administrativo/mngUsuarios/newUser.html";
 	}
 	@GetMapping(path="/menuAdm/mngUsuarios/viewUser/try")
-	public String viewUser(String matricula, String cpf, String email, String usertype, Model model){
+	public String viewUser(String nome, String matricula, String cpf, String email, String usertype, Model model){
 		
 			Usuario usr = new Usuario();
-			if(matricula.isBlank()&&cpf.isBlank()&&email.isBlank())
+			if(matricula.isBlank()&&cpf.isBlank()&&email.isBlank()&&nome.isBlank())
 				return "redirect:/administrativo/mngUsuarios/viewUser.html";
 						
 			if(!matricula.isBlank()) {
@@ -60,10 +63,16 @@ public class userController {
 			if(!usertype.isBlank()) {
 				usr.setUsertype(usertype);
 			}
+			if(!nome.isBlank()) {
+				usr.setNome(nome);
+			}
+			
 			
 			Example<Usuario> example = Example.of(usr);
-			Optional<Usuario> search = repositorio.findOne(example);
-			model.addAttribute("usuario",search.get());
+			Iterable<Usuario> search = repositorio.findAll(example);
+			search.iterator().forEachRemaining(System.out::println);
+			model.addAttribute("usuarios",search);
+			
 			return "viewUserResult";
 	}
 	@GetMapping(path="/menuAdm/mngUsuarios/viewUser/voltar")

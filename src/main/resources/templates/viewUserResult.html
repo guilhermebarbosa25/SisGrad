@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <title>SisGrad</title>
 <style>
-div.mytable {
-  margin: auto;
-  width: 1020px;
-  padding: 10px; 
+.button{
+	display: inline-block;
+	width: 100px;
+	text-allign: center;
 }
 </style>
 </head>
@@ -16,7 +16,7 @@ div.mytable {
 	<h3>
 		Dados do usuário
 		</h3>
-		<div class="mytable" align="center">
+		<div align="center">
 			<table  border="1" style="width:500px">
 				<thead class="table-info">
 					<tr style="text-align: center; vertical-align: middle">
@@ -25,16 +25,19 @@ div.mytable {
 						<th scope="col" style="width:200px">CPF</th>
 						<th scope="col" style="width:300px">E-Mail</th>
 						<th scope="col" style="width:200px">Tipo</th>
+						<th scope="col" style="width:100px">Administrar</th>
 					</tr>
 					
 				</thead>
 				<tbody>
-					<tr th:each="Usuario : ${usuario}" style="text-align: center; vertical-align: middle">
-						<td><span th:text="${usuario.matricula}"> Matrícula </span></td>
-						<td><span th:text="${usuario.nome}"> Nome </span></td>
-						<td><span th:text="${usuario.cpf}"> CPF </span></td>
-						<td><span th:text="${usuario.email}"> E-Mail </span></td>
-						<td><span th:text="${usuario.usertype}"> Tipo </span></td>
+					<tr th:each="Usuario : ${usuarios}" style="text-align: center; vertical-align: middle">
+						<td><span th:text="${Usuario.matricula}"> N/A </span></td>
+						<td><span th:text="${Usuario.nome}"> N/A </span></td>
+						<td><span th:text="${Usuario.cpf}"> N/A </span></td>
+						<td><span th:text="${Usuario.email}"> N/A </span></td>
+						<td><span th:text="${Usuario.usertype}"> N/A </span></td>
+						<td><button class="button">Remover</button><button class="button">Editar</button></td>
+						
 					</tr>
 				</tbody>
 			</table>
