@@ -1,4 +1,6 @@
 package Models;
+
+
 import java.util.Random;
 
 import javax.persistence.Entity;
@@ -29,27 +31,16 @@ public class Usuario {
 	public String datanasc;
 	public String usertype;
 	
-	public Usuario() {};
-	public Usuario(String email, String cpf, String nome, String datanasc, String usertype) {
-		this.email = email;
-		this.usertype = usertype;
+	public void copyFrom(Usuario usr) {
+		this.email= usr.email;
+		this.cpf= usr.cpf;
+		this.nome= usr.nome;
+		this.datanasc= usr.datanasc;
+		this.usertype= usr.usertype;
+	}
+	public Usuario() {
 		PasswordGen();
-		this.cpf = cpf;
-		this.nome = nome;
-		this.datanasc = datanasc;
-	}
-	public Usuario(String matricula, String email, String cpf, String usertype) {
-		this.email = email;
-		this.usertype = usertype;
-		this.matricula=matricula;
-		this.cpf = cpf;
-	}
-	public Usuario(String email, String cpf, String usertype) {
-		this.email = email;
-		this.usertype = usertype;
-		this.cpf = cpf;
-	}
-
+	};
 	public String getEmail() {
 		return email;
 	}
@@ -86,6 +77,12 @@ public class Usuario {
 	public String getMatricula() {
 		return this.matricula;
 	}
+	public String getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
 	
 	private void PasswordGen() {
 		int leftLimit = 97; // letter 'a'
@@ -109,14 +106,15 @@ public class Usuario {
 				"\n tipo:"+usertype;
 	}
 	public boolean isValid() {
-		return !cpf.isBlank() && !nome.isBlank() && !email.isBlank();
+		if(cpf.matches("^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$"))
+			if(!nome.isBlank())
+				if(email.matches("^[a-z0-9.]+@[a-z0-9]+\\.[a-z]+\\.([a-z]+)?$"))
+					if(!usertype.isBlank())
+						return true;
+		return false;
 	}
-	public String getUsertype() {
-		return usertype;
-	}
-	public void setUsertype(String usertype) {
-		this.usertype = usertype;
-	}
+
+
 	
 	
 	

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SisGrad</title>
+<style>
+.button{
+	display: inline-block;
+	width: 100px;
+	text-allign: center;
+}
+</style>
+</head>
+<body>
+<script>
+</script>
+	<h3>
+		Dados do Curso
+		</h3>
+		<div align="center">
+			<table  border="1" style="width:500px">
+				<thead class="table-info">
+					<tr style="text-align: center; vertical-align: middle">
+						<th scope="col" style="width:300px">Nome</th>
+						<th scope="col" style="width:300px">Turno</th>
+						<th scope="col" style="width:300px">Quantidade de Períodos</th>
+						<th scope="col" style="width:100px">Administrar</th>
+					</tr>
+					
+				</thead>
+				<tbody>
+					<tr th:each="Curso : ${cursos}" style="text-align: center; vertical-align: middle">
+
+						<td><span th:text="${Curso.nome}"> N/A </span></td>
+						<td><span th:text="${Curso.turno}"> N/A </span></td>
+						<td><span th:text="${Curso.qtdPeriodos}"> N/A </span></td>
+						<td>
+							<form action="#" th:action="@{/menuAdm/mngCursos/editCurso/}+${{Curso.nome}}" method="get">
+							<button class="button">Editar</button></form>
+							
+							<form action="#" th:action="@{/menuAdm/mngCursos/addDisciplina/}+${Curso.nome}+@{&}+${Curso.turno}" method="get">
+							<button class="button">Adicionar Disciplina</button></form>
+							
+							<form action="#" th:action="@{/menuAdm/mngCursos/viewPrograma/}+${Curso.nome}+@{&}+${Curso.turno}" method="get">
+							<button class="button">Visualizar Programa</button></form>
+							
+							<form action="#" th:action="@{/menuAdm/mngCursos/delCurso/try/}+${Curso.nome}+@{&}+${Curso.turno}" method="get">
+							<button class="button">Remover</button></form>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<form method="get" action="/menuAdm/mngCursos/viewCurso/Lista/voltar"><button>Voltar</button></form>
+</body>
+</html>

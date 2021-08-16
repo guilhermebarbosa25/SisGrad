@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../styles/formStyles.css"/>
+<meta charset="UTF-8">
+<title>SisGrad</title>
+</head>
+<body>
+	<section>
+	<h3>Inserir Curso</h3>
+		<form method="post" action="/menuAdm/mngCursos/newCurso/post">
+			 <label for="Nome do Curso">Nome:</label> <input type="text" id="nome" name="nome"><br>
+			 <label for="Quantidade de Períodos">Quantidade de Períodos:</label> <input type="text" id="qtdPeriodos" name="qtdPeriodos"><br>
+			 <label for="turno">Turno:</label>
+			 <select name="turno" id="turno" default="">
+			   <option value="" selected disabled hidden></option>
+			   <option value="Matutino">Matutino</option>
+			   <option value="Vespertino">Vespertino</option>
+			   <option value="Noturno">Noturno</option>
+			 </select><br><br><br><br>
+			<button>Enviar</button>
+		</form>
+		<form method="get" action="/menuAdm/mngCursos/newCurso/voltar">
+			<button>Voltar</button>
+		</form>
+	</section>
+</body>
+</html>
+

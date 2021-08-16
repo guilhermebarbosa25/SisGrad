@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../../styles/formStyles.css"/>
+<title>SisGrad</title>
+<style>
+</style>
+</head>
+<body>
+<section>
+	<h3>Visualizar Curso</h3>
+			<form method="get" action="/menuAdm/mngCursos/viewCurso/try">
+			 <label for="nome">Nome:</label><input type="text" id="nome" name="nome"><br>
+			 <label for="turno">Turno:</label>
+				<select name="turno" id="turno">
+				   <option value="" selected disabled hidden></option>
+				   <option value="Matutino">Matutino</option>
+				   <option value="Vespertino">Vespertino</option>
+				   <option value="Noturno">Noturno</option>
+				 </select>
+			   <br><br><br><br>
+			<button class="button">Buscar</button>
+		</form>
+		<form method="get" action="/menuAdm/mngCursos/newCurso/voltar">
+			<button class="button">Voltar</button>
+		</form>
+	</section>
+</body>
+</html>

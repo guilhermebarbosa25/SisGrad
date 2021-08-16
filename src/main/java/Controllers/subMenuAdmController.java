@@ -30,4 +30,26 @@ public class subMenuAdmController {
 	public  String GoBack(final RedirectAttributes redirectattributes){
 		return "redirect:/administrativo/menu.html";
 	}
+	
+	
+	
+	@GetMapping(path="/menuAdm/mngCursos/newCurso")
+	public String GoNewCursos(final RedirectAttributes redirectattributes) {
+		return "redirect:/administrativo/mngCursos/newCurso.html";
+	}
+	@GetMapping(path="/menuAdm/mngCursos/viewCurso")
+	public String GoViewCursos(final RedirectAttributes redirectattributes) {
+		return "redirect:/administrativo/mngCursos/viewCurso.html";
+	}
+	
+	
+	
+	@GetMapping(path="/menuAdm/mngDisciplinas/newDisciplina")
+	public String GoNewDisciplinas(final RedirectAttributes redirectattributes) {
+		return "redirect:/administrativo/mngDisciplinas/newDisciplina.html";
+	}
+	@GetMapping(path="/menuAdm/mngDisciplinas/viewCurso")
+	public String GoViewDisciplinas(final RedirectAttributes redirectattributes) {
+		return "redirect:/administrativo/mngDisciplinas/viewDisciplina.html";
+	}
 }

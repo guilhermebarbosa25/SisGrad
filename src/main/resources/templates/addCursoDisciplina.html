@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../styles/formStyles.css"/>
+<meta charset="UTF-8">
+<title>SisGrad</title>
+</head>
+<body>
+<script>
+</script>
+
+	<h3>
+		Dados do Curso
+		</h3>
+		<div align="center">
+			<table  border="1" style="width:500px">
+				<thead class="table-info">
+					<tr style="text-align: center; vertical-align: middle">
+						<th scope="col" style="width:300px">Nome</th>
+						<th scope="col" style="width:300px">Turno</th>
+						<th scope="col" style="width:300px">Quantidade de Períodos</th>
+					</tr>
+					
+				</thead>
+				<tbody>
+					<tr th:each="Curso : ${cursos}" style="text-align: center; vertical-align: middle">
+						<td><span th:text="${Curso.nome}"> N/A </span>
+								<input type="hidden" name="Nomecurso" th:value="${Curso.nome}" ></input>
+								</td>
+						<td><span th:text="${Curso.turno}"> N/A </span>
+								<input type="hidden" name="Turno" th:value="${Curso.turno}" ></input>
+								</td>
+						<td><span th:text="${Curso.qtdPeriodos}"> N/A </span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<h3>
+		Escolha a Disciplina
+		</h3>
+		<div align="center">
+			<table  border="1" style="width: 200px; table-layout: fixed">
+				<thead class="table-info">
+					<tr style="text-align: center; vertical-align: middle">
+						<th scope="col" style="width:200px">Código</th>
+						<th scope="col" style="width:200px">Nome</th>
+						<th scope="col" style="width:200px">Carga Horária</th>
+						<th scope="col" style="width:200px">Descrição</th>
+						<th scope="col" style="width:100px">Periodo</th>
+						<th scope="col" style="width:100px">Adicionar</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div align="center">
+			<tr th:each="Disciplina : ${disciplinas}" th:with="nome=${cursos[0].nome}, turno=${cursos[0].turno}" style="text-align: center; vertical-align: middle">		
+				<table  border="1" style="width:200px; table-layout: fixed;">
+					<tbody>
+						<form action="#" th:action="@{/menuAdm/mngCursos/Curso_Disc/post}" method="post">	
+							<tr style="text-align: center; vertical-align: middle; allign: center;">
+								<input type="hidden" th:name="Nomecurso" th:value="${nome}" ></input>
+								<input type="hidden" th:name="Turno" th:value="${turno}" ></input>			
+								<td style="width: 200px; table-layout: fixed; allign: center;"><div><span th:text="${Disciplina.codigo}"> N/A </span><input type="hidden" th:name="codigo" th:value="${Disciplina.codigo}" ></input></div></td>
+									
+								<td style="width: 200px; table-layout: fixed; allign: center;"><div><span th:text="${Disciplina.nome}"> N/A </span></div></td>
+								
+								<td style="width: 200px; table-layout: fixed; allign: center;"><div><span th:text="${Disciplina.cargaHoraria}"> N/A </span></div></td>
+								
+								<td style="width: 200px; table-layout: fixed; allign: center;"><div><span th:text="${Disciplina.descricao}"> N/A </span></div></td>
+								
+								<td style="width: 100px; table-layout: fixed; allign: center;"><div><select th:name="periodo" th:id="periodo">
+									   <option value="" selected disabled hidden></option>
+									   <option value="1">1</option>
+									   <option value="2">2</option>
+									   <option value="3">3</option>
+									   <option value="4">4</option>
+									   <option value="5">5</option>
+									   <option value="6">6</option>
+									   <option value="7">7</option>
+									   <option value="8">8</option>
+									   <option value="9">9</option>
+									   <option value="10">10</option>
+									   <option value="11">11</option>
+									   <option value="12">12</option>						   
+								 </select></div></td>
+								
+								<td style="width: 100px; table-layout: fixed; allign: center;"><div><button class="button">Adicionar</button></div></td>
+							</tr>
+						</form>
+					</tbody>
+				</table>
+			</tr>
+		</div>
+		<form method="get" action="/menuAdm/mngCursos/viewCurso/Lista/voltar"><button>Voltar</button></form>
+</body>
+</html>

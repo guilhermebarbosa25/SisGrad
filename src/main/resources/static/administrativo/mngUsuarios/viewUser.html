@@ -2,10 +2,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="styles/formStyles.css"/>
+<link rel="stylesheet" type="text/css" href="../../styles/formStyles.css"/>
 <title>SisGrad</title>
+<style>
+</style>
 </head>
 <body>
+<section>
 	<h3>Visualizar Usuário</h3>
 			<form method="get" action="/menuAdm/mngUsuarios/viewUser/try">
 			 <label for="nome">Nome:</label><input type="text" id="nome" name="nome"><br>
@@ -15,15 +18,17 @@
 			 
 			<label for="usertype">Tipo de Usuário:</label>
 			<select name="usertype" id="usertype">
+			   <option value="" selected disabled hidden></option>
 			   <option value="Administrativo">Administrativo</option>
 			   <option value="Aluno">Aluno</option>
 			   <option value="Professor">Professor</option>
 			 </select>
-			   <br><br>
-			<button>Buscar</button>
+			   <br><br><br><br>
+			<button class="button">Buscar</button>
 		</form>
 		<form method="get" action="/menuAdm/mngUsuarios/viewUser/voltar">
-			<button>Voltar</button>
+			<button class="button">Voltar</button>
 		</form>
+	</section>
 </body>
 </html>

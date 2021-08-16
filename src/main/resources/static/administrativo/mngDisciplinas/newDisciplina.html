@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../../styles/formStyles.css"/>
+<meta charset="UTF-8">
+<title>SisGrad</title>
+</head>
+<body>
+	<section>
+	<h3>Inserir Disciplina</h3>
+		<form method="post" action="/menuAdm/mngDisciplinas/newDisciplina/post">
+			 <label for="Nome da Disciplina">Nome:</label> <input type="text" id="nome" name="nome"><br>
+			 <label for="Carga Horaria">Carga Horaria:</label> <input type="text" id="cargaHoraria" name="cargaHoraria"><br>
+			 <label for="Codigo">Código:</label> <input type="text" id="codigo" name="codigo"><br>
+			 <label for="Descricao">Descrição:</label><textarea id="descricao" class="text" name="descricao" rows="6" cols="60"></textarea>
+			 <br><br>
+			<button>Enviar</button>
+		</form>
+		<form method="get" action="/menuAdm/mngDisciplinas/newDisciplina/voltar">
+			<button>Voltar</button>
+		</form>
+	</section>
+</body>
+</html>
+

@@ -3,7 +3,6 @@ package Models;
 
 import java.util.Optional;
 
-import org.springframework.data.domain.Example;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.stereotype.Repository;
@@ -19,4 +18,5 @@ extends PagingAndSortingRepository<Usuario,Integer>, QueryByExampleExecutor<Usua
 		public Optional<Usuario> findByEmailAndCpfAndUsertype(String email, String cpf, String usertype);
 		public Optional<Usuario> findByEmailOrCpfOrUsertype(String email, String cpf,String usertype);
 		public Optional<Usuario> findByEmailOrCpfOrMatricula(String email, String cpf, int matricula);
+		public Optional<Usuario> findByMatricula(String matricula);
 }

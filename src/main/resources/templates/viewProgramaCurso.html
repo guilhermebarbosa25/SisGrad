@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SisGrad</title>
+<style>
+.button{
+	display: inline-block;
+	width: 100px;
+	text-allign: center;
+}
+</style>
+</head>
+<body>
+<script>
+</script>
+	<h3>
+		Programa do Curso
+		</h3>
+		<div align="center">
+			<table  border="1" style="width:500px">
+				<thead class="table-info">
+					<tr style="text-align: center; vertical-align: middle">
+						<th scope="col" style="width:300px">Período</th>
+						<th scope="col" style="width:300px">Código</th>
+						<th scope="col" style="width:300px">Nome da Disciplina</th>
+						<th scope="col" style="width:100px">Carga Horária</th>
+						<th scope="col" style="width:100px">Descrição</th>
+					</tr>
+					
+				</thead>
+				<tbody>
+					<tr th:each="Disciplina : ${disciplinas}" style="text-align: center; vertical-align: middle">
+
+						<td><span th:text="${Disciplina.periodo}"> N/A </span></td>
+						<td><span th:text="${Disciplina.disciplina.codigo}"> N/A </span></td>
+						<td><span th:text="${Disciplina.disciplina.nome}"> N/A </span></td>
+						<td><span th:text="${Disciplina.disciplina.cargaHoraria}"> N/A </span></td>
+						<td><span th:text="${Disciplina.disciplina.descricao}"> N/A </span></td>						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<form method="get" action="/menuAdm/mngCursos/viewCurso/Lista/voltar"><button>Voltar</button></form>
+</body>
+</html>

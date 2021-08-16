@@ -12,7 +12,8 @@
 </style>
 </head>
 <body>
-
+<script>
+</script>
 	<h3>
 		Dados do usuário
 		</h3>
@@ -36,7 +37,12 @@
 						<td><span th:text="${Usuario.cpf}"> N/A </span></td>
 						<td><span th:text="${Usuario.email}"> N/A </span></td>
 						<td><span th:text="${Usuario.usertype}"> N/A </span></td>
-						<td><button class="button">Remover</button><button class="button">Editar</button></td>
+						<td>
+							<form action="#" th:action="@{/menuAdm/mngUsuarios/editUser/}+${{Usuario.matricula}}" method="get">
+							<button class="button">Editar</button></form>
+							
+							<form action="#" th:action="@{/menuAdm/mngUsuarios/delUser/try/}+${{Usuario.matricula}}" method="get">
+							<button class="button">Remover</button></form>
 						
 					</tr>
 				</tbody>
