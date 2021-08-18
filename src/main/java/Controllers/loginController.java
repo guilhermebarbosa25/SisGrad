@@ -21,11 +21,18 @@ public class loginController {
 	@PostMapping(path="/geral/login/try")
 	public  String TryLogin(String email, String senha, final RedirectAttributes redirectattributes){
 		Optional<Usuario> usr = repositorio.findByEmailIgnoreCase(email);
-		if((usr.get().senha.equals(new String(senha)))  && (usr.get().email.equals(new String(email)))) {
-			redirectattributes.addFlashAttribute("message","Sucesso");
-			return "redirect:/administrativo/menu.html";
+		if(!usr.isEmpty()) {
+			if((usr.get().senha.equals(new String(senha)))  && (usr.get().email.equals(new String(email)))) {
+				redirectattributes.addFlashAttribute("message","Sucesso");
+				if(usr.get().usertype.equals(new String("Administrativo")))
+					return "redirect:/administrativo/menu.html";
+				else if(usr.get().usertype=="Administrativo")
+					return "redirect:/aluno/menu.html";
+				else 
+					return "redirect:/professor/menu.html";
+			}
 		}
-		redirectattributes.addFlashAttribute("message","Sucesso");
+		redirectattributes.addFlashAttribute("message","Falhou");
 		return "redirect:/geral/login.html";
 	}
 	
